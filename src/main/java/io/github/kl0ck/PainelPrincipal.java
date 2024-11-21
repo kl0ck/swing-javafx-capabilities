@@ -4,16 +4,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import java.time.LocalDate;
 
 import org.controlsfx.control.SearchableComboBox;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -54,11 +57,18 @@ class PainelPrincipal extends JPanel {
         migPane.add(new Label("Nome:"));
         migPane.add(new TextField());
 
+        migPane.add(new Label("Data de Nascimento:"));
+        migPane.add(new DatePicker(LocalDate.of(1980, 1, 1)));
+
         migPane.add(new Label("Email:"));
         migPane.add(new TextField());
 
         migPane.add(new Label("Sexo:"));
-        migPane.add(new SearchableComboBox());
+        migPane.add(new SearchableComboBox<>(FXCollections.observableArrayList("Masculino", "Feminino")));
+
+        migPane.add(new Label("Gênero:"));
+        migPane.add(new SearchableComboBox<>(FXCollections.observableArrayList("Masculino", "Feminino", "Não-binário", "Bicha")));
+
         
         return migPane;
     }
